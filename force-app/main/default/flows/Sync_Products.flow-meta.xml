@@ -7,9 +7,24 @@
         <locationY>0</locationY>
         <actionName>ProductSyncFlowController</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>Result</targetReference>
+        </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <nameSegment>ProductSyncFlowController</nameSegment>
         <offset>0</offset>
+        <outputParameters>
+            <assignToReference>varMessage</assignToReference>
+            <name>message</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>varResultNumber</assignToReference>
+            <name>productsCount</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>varIsSuccess</assignToReference>
+            <name>success</name>
+        </outputParameters>
     </actionCalls>
     <apiVersion>65.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -41,6 +56,31 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Result</name>
+        <label>Result</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>SyncProductsComponent</name>
+            <fieldText>&lt;p&gt;{!varMessage}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <screens>
         <name>SyncProduct</name>
         <label>Sync Product</label>
@@ -52,6 +92,19 @@
         <connector>
             <targetReference>Sync_Products</targetReference>
         </connector>
+        <fields>
+            <name>SyncProductsTxt</name>
+            <fieldText>&lt;p&gt;Sync Products&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
         <nextOrFinishButtonLabel>Sync Products</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -63,5 +116,27 @@
             <targetReference>SyncProduct</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
+    <variables>
+        <name>varIsSuccess</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varResultNumber</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
 </Flow>

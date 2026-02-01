@@ -4,5 +4,9 @@
         <members>Sync_Products</members>
         <name>Flow</name>
     </types>
+     <types>
+        <members>ExternalIntegrationSettings.FakeStoreAPI</members>
+        <name>CustomMetadata</name>
+    </types>
     <version>65.0</version>
 </Package>
